@@ -9,107 +9,206 @@
 <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --bg:#0A0A0A; --surface:#141414; --surface2:#1b1b1b;
-    --border:#2a2a2a; --accent:#5588AC; --accent-dark:#3f6885;
-    --text:#f2f2f2; --text-2:#b8b8b8; --muted:#7a7a7a;
+    --bg:#0A0A0A;
+    --surface:#121214;
+    --line:rgba(255,255,255,.08);
+    --text:#EDEDED;
+    --muted:#9A9A9A;
+    --blue:#72A4D9;
+    --gold:#D9A441;
   }
   *{margin:0;padding:0;box-sizing:border-box}
+  html{scroll-behavior:smooth}
   body{
-    background:var(--bg); color:var(--text);
-    font-family:'Tajawal',Tahoma,Arial,sans-serif;
-    line-height:1.9; padding:0 20px;
+    background:var(--bg);
+    color:var(--text);
+    font-family:'Tajawal',system-ui,sans-serif;
+    line-height:1.9;
+    -webkit-font-smoothing:antialiased;
+    padding:0 20px;
   }
-  .wrap{max-width:760px;margin:0 auto;padding:56px 0 80px}
-  .header{display:flex;align-items:center;gap:14px;margin-bottom:8px}
-  .logo{
-    width:46px;height:46px;border-radius:13px;
-    background:rgba(85,136,172,0.14);
-    border:1px solid rgba(85,136,172,0.30);
-    display:flex;align-items:center;justify-content:center;
-    font-size:22px;
+  .wrap{max-width:760px;margin:0 auto;padding:72px 0 96px}
+
+  header{margin-bottom:48px}
+  .brand{
+    display:inline-flex;align-items:center;gap:10px;
+    color:var(--muted);font-size:14px;font-weight:500;
+    letter-spacing:.04em;margin-bottom:28px;
   }
-  h1{font-size:28px;font-weight:800;letter-spacing:-0.5px}
-  .updated{color:var(--muted);font-size:13px;margin:14px 0 6px;display:flex;align-items:center;gap:7px}
-  .intro{color:var(--text-2);font-size:15px;margin:18px 0 38px;border-right:3px solid var(--accent);padding-right:16px}
-  .section{
-    background:var(--surface);border:1px solid var(--border);
-    border-radius:16px;padding:22px 24px;margin-bottom:16px;
+  .brand .dot{width:7px;height:7px;border-radius:50%;background:var(--gold)}
+  h1{
+    font-size:clamp(30px,6vw,44px);font-weight:800;
+    letter-spacing:-.01em;line-height:1.25;
   }
-  .section h2{
-    font-size:17px;font-weight:700;margin-bottom:10px;
-    display:flex;align-items:center;gap:11px;
+  .updated{color:var(--muted);font-size:14px;margin-top:14px;font-weight:400}
+
+  .intro{
+    color:var(--muted);font-size:16px;margin:32px 0 8px;
+    padding-bottom:32px;border-bottom:1px solid var(--line);
   }
-  .num{
-    width:26px;height:26px;border-radius:8px;flex-shrink:0;
-    background:rgba(85,136,172,0.16);color:var(--accent);
-    display:flex;align-items:center;justify-content:center;
-    font-size:13px;font-weight:800;
+
+  section{padding:34px 0;border-bottom:1px solid var(--line)}
+  section:last-of-type{border-bottom:none}
+  h2{
+    font-size:20px;font-weight:700;margin-bottom:14px;
+    display:flex;align-items:baseline;gap:12px;
   }
-  .section p{color:var(--text-2);font-size:14.5px}
-  .contact{
-    background:linear-gradient(135deg,rgba(85,136,172,0.12),rgba(85,136,172,0.04));
-    border:1px solid rgba(85,136,172,0.30);
-    border-radius:16px;padding:22px 24px;margin-top:26px;
+  h2 .n{
+    color:var(--blue);font-size:14px;font-weight:700;
+    font-variant-numeric:tabular-nums;flex:none;
   }
-  .contact h2{font-size:16px;font-weight:700;margin-bottom:8px}
-  .contact p{color:var(--text-2);font-size:14px;margin-bottom:12px}
-  .mail{
-    display:inline-block;background:rgba(10,10,10,0.6);
-    border:1px solid rgba(85,136,172,0.25);border-radius:10px;
-    padding:11px 16px;color:var(--accent);font-weight:700;
-    text-decoration:none;direction:ltr;font-size:14px;
+  p{color:#CFCFCF;font-size:15.5px;margin-bottom:12px}
+  p:last-child{margin-bottom:0}
+  ul{list-style:none;margin:8px 0 0}
+  li{
+    color:#CFCFCF;font-size:15.5px;position:relative;
+    padding-inline-start:20px;margin-bottom:9px;
   }
-  .mail:hover{background:rgba(85,136,172,0.12)}
-  .foot{text-align:center;color:var(--muted);font-size:12px;margin-top:46px}
-  .foot a{color:var(--accent);text-decoration:none}
+  li::before{
+    content:"";position:absolute;inset-inline-start:0;top:13px;
+    width:6px;height:6px;border-radius:50%;background:var(--gold);
+  }
+  strong{color:var(--text);font-weight:700}
+  a{color:var(--blue);text-decoration:none;border-bottom:1px solid rgba(114,164,217,.4)}
+  a:hover{border-bottom-color:var(--blue)}
+
+  .tiers{
+    background:var(--surface);border:1px solid var(--line);
+    border-radius:16px;padding:20px 22px;margin-top:16px;
+  }
+  .tier-row{
+    display:flex;justify-content:space-between;align-items:center;
+    padding:11px 0;border-bottom:1px solid var(--line);gap:16px;
+  }
+  .tier-row:last-child{border-bottom:none}
+  .tier-name{font-weight:700;font-size:15px}
+  .tier-price{color:var(--muted);font-size:14px;text-align:start;font-variant-numeric:tabular-nums}
+
+  footer{
+    margin-top:56px;padding-top:28px;border-top:1px solid var(--line);
+    color:var(--muted);font-size:13.5px;text-align:center;line-height:2;
+  }
+  footer a{border:none}
 </style>
 </head>
 <body>
 <div class="wrap">
-  <div class="header">
-    <div class="logo">📄</div>
+
+  <header>
+    <span class="brand"><span class="dot"></span>توالي</span>
     <h1>شروط الاستخدام</h1>
-  </div>
-  <div class="updated">آخر تحديث: يونيو 2026</div>
-  <p class="intro">باستخدامك تطبيق توالي فإنك توافق على الشروط التالية. يُرجى قراءتها بعناية.</p>
+    <p class="updated">آخر تحديث: ٢٠ يونيو ٢٠٢٦</p>
+  </header>
 
-  <div class="section"><h2><span class="num">1</span> قبول الشروط</h2>
-  <p>باستخدامك لتطبيق توالي أو إنشاء حساب فيه، فإنك تقرّ بموافقتك على هذه الشروط وعلى سياسة الخصوصية. إذا لم توافق، يُرجى عدم استخدام التطبيق.</p></div>
+  <p class="intro">
+    باستخدامك تطبيق توالي فإنك توافق على الشروط التالية. نرجو قراءتها بعناية،
+    فهي تنظّم علاقتك بالتطبيق واشتراكاتك المدفوعة.
+  </p>
 
-  <div class="section"><h2><span class="num">2</span> الحساب</h2>
-  <p>أنت مسؤول عن دقة بيانات حسابك وعن الحفاظ على سرية كلمة المرور. يجب أن يكون عمرك 13 عاماً أو أكثر لاستخدام التطبيق. أنت مسؤول عن كل النشاط الذي يحدث عبر حسابك.</p></div>
+  <section>
+    <h2><span class="n">١</span> قبول الشروط</h2>
+    <p>
+      بتحميلك أو استخدامك تطبيق توالي، فإنك تقرّ بأنك قرأت هذه الشروط ووافقت
+      على الالتزام بها. إذا كنت لا توافق على أي جزء منها، فالرجاء عدم استخدام التطبيق.
+    </p>
+  </section>
 
-  <div class="section"><h2><span class="num">3</span> طبيعة المحتوى</h2>
-  <p>يقدّم توالي ملخّصات وأفكاراً مستوحاة من الكتب بصياغة خاصة بنا، إضافة إلى محتوى من المصنّفات في الملكية العامة. هذا المحتوى لأغراض الاطّلاع والإفادة، ولا يُعدّ بديلاً عن قراءة الأعمال الأصلية كاملة.</p></div>
+  <section>
+    <h2><span class="n">٢</span> وصف الخدمة</h2>
+    <p>
+      توالي تطبيق عربي يقدّم بطاقات معرفية وروايات وقوائم منظّمة من مصادر في
+      الملك العام. تتوفّر ميزات مجانية وميزات إضافية عبر اشتراك مدفوع.
+    </p>
+  </section>
 
-  <div class="section"><h2><span class="num">4</span> الملكية الفكرية</h2>
-  <p>جميع حقوق التصميم والعلامة والصياغة الخاصة بتوالي محفوظة. لا يجوز نسخ محتوى التطبيق أو إعادة نشره أو استخدامه تجارياً دون إذن كتابي مسبق منّا.</p></div>
+  <section>
+    <h2><span class="n">٣</span> الاشتراكات والأسعار</h2>
+    <p>يوفّر توالي باقتي اشتراك مدفوعة بتجديد تلقائي:</p>
+    <div class="tiers">
+      <div class="tier-row">
+        <span class="tier-name">توالي بيسك</span>
+        <span class="tier-price">١٨ ر.س/شهرياً · ١٦٩ ر.س/سنوياً</span>
+      </div>
+      <div class="tier-row">
+        <span class="tier-name">توالي بريميوم</span>
+        <span class="tier-price">٣٤ ر.س/شهرياً · ٣٣٩ ر.س/سنوياً</span>
+      </div>
+    </div>
+    <p style="margin-top:16px">
+      قد تختلف الأسعار حسب بلدك وعملتك، ويظهر السعر النهائي داخل شاشة الشراء قبل
+      تأكيد الاشتراك.
+    </p>
+  </section>
 
-  <div class="section"><h2><span class="num">5</span> الاشتراكات والمدفوعات</h2>
-  <p>يوفّر توالي اشتراكات مدفوعة (أساسي ومميّز) تُدار وتُحصَّل عبر متجر التطبيقات (Apple App Store أو Google Play). تتجدّد الاشتراكات تلقائياً ما لم تُلغِها قبل نهاية الفترة من إعدادات حسابك في المتجر. تخضع المبالغ المستردّة لسياسات المتجر المعني.</p></div>
+  <section>
+    <h2><span class="n">٤</span> التجديد التلقائي والإلغاء</h2>
+    <ul>
+      <li>يتجدّد الاشتراك تلقائياً ويُخصم المبلغ عند تأكيد الشراء.</li>
+      <li>يتجدّد ما لم يتم إلغاؤه قبل ٢٤ ساعة على الأقل من نهاية الفترة الحالية.</li>
+      <li>على أجهزة آبل: تُدار الاشتراكات وتُلغى من إعدادات <strong>Apple ID</strong>.</li>
+      <li>على أجهزة أندرويد: تُدار الاشتراكات وتُلغى من إعدادات <strong>Google Play</strong>.</li>
+      <li>يبقى وصولك للمزايا المدفوعة حتى نهاية الفترة المدفوعة بعد الإلغاء.</li>
+    </ul>
+  </section>
 
-  <div class="section"><h2><span class="num">6</span> الاستخدام المقبول</h2>
-  <p>تلتزم بعدم إساءة استخدام التطبيق، بما في ذلك محاولة اختراقه، أو نشر محتوى مسيء أو مخالف للقانون في التعليقات، أو انتحال هوية الغير، أو الإضرار بتجربة المستخدمين الآخرين. نحتفظ بحق تعليق أو إنهاء أي حساب يخالف ذلك.</p></div>
+  <section>
+    <h2><span class="n">٥</span> المدفوعات</h2>
+    <p>
+      تتم جميع المدفوعات عبر متجر التطبيقات (App Store أو Google Play) وفق سياسات
+      كل متجر. توالي لا يجمع أو يخزّن بيانات بطاقتك البنكية.
+    </p>
+  </section>
 
-  <div class="section"><h2><span class="num">7</span> المحتوى الذي ينشئه المستخدم</h2>
-  <p>أنت مسؤول عن تعليقاتك وما تنشره داخل التطبيق. بنشرك أي محتوى، تمنحنا حق عرضه داخل التطبيق. نحتفظ بحق إزالة أي محتوى مخالف دون إشعار مسبق.</p></div>
+  <section>
+    <h2><span class="n">٦</span> الاستخدام المقبول</h2>
+    <p>توافق على عدم القيام بما يلي:</p>
+    <ul>
+      <li>إساءة استخدام التطبيق أو محاولة الوصول غير المصرّح به لأنظمته.</li>
+      <li>نشر تعليقات مخالفة أو مسيئة أو تنتهك حقوق الآخرين.</li>
+      <li>إعادة نشر محتوى التطبيق تجارياً دون إذن.</li>
+    </ul>
+    <p style="margin-top:12px">
+      نحتفظ بحق تقييد أو إيقاف الحساب عند مخالفة هذه الشروط.
+    </p>
+  </section>
 
-  <div class="section"><h2><span class="num">8</span> إخلاء المسؤولية</h2>
-  <p>يُقدَّم التطبيق "كما هو" دون ضمانات. لا نتحمّل مسؤولية أي أضرار ناتجة عن استخدام التطبيق أو انقطاع الخدمة أو فقدان البيانات، في حدود ما يسمح به القانون.</p></div>
+  <section>
+    <h2><span class="n">٧</span> المحتوى والملكية</h2>
+    <p>
+      محتوى البطاقات والروايات مأخوذ من مصادر عربية في الملك العام. أما تصميم
+      التطبيق وعلامته وواجهته فهي ملك لتوالي ومحميّة.
+    </p>
+  </section>
 
-  <div class="section"><h2><span class="num">9</span> إنهاء الخدمة</h2>
-  <p>يمكنك حذف حسابك في أي وقت من الإعدادات. ويحقّ لنا تعليق الخدمة أو إيقاف حساب يخالف هذه الشروط. عند الإنهاء، تُحذف بياناتك وفق سياسة الخصوصية.</p></div>
+  <section>
+    <h2><span class="n">٨</span> إخلاء المسؤولية</h2>
+    <p>
+      يُقدَّم التطبيق «كما هو». نسعى لدقة المحتوى وتوفّر الخدمة، لكننا لا نضمن
+      خلوّه التام من الأخطاء أو الانقطاع.
+    </p>
+  </section>
 
-  <div class="section"><h2><span class="num">10</span> التغييرات على الشروط</h2>
-  <p>قد نحدّث هذه الشروط من وقت لآخر، وسننشر أي تغييرات هنا مع تحديث تاريخها. استمرارك في استخدام التطبيق بعد التحديث يعني موافقتك على النسخة الجديدة.</p></div>
+  <section>
+    <h2><span class="n">٩</span> التعديلات على الشروط</h2>
+    <p>
+      قد نحدّث هذه الشروط من وقت لآخر. استمرارك في استخدام التطبيق بعد التحديث
+      يُعدّ موافقة على النسخة المحدّثة.
+    </p>
+  </section>
 
-  <div class="contact">
-    <h2>📩 للتواصل</h2>
-    <p>لأي استفسار حول هذه الشروط، تواصل معنا عبر:</p>
-    <a class="mail" href="mailto:tawaliservice@gmail.com">tawaliservice@gmail.com</a>
-  </div>
+  <section>
+    <h2><span class="n">١٠</span> التواصل</h2>
+    <p>
+      لأي استفسار حول هذه الشروط، تواصل معنا عبر حساب توالي على إنستغرام
+      <a href="https://instagram.com/tawali_app" target="_blank" rel="noopener">tawali_app@</a>.
+    </p>
+  </section>
 
-  <div class="foot">توالي — <a href="privacy.html">سياسة الخصوصية</a> · © 2026</div>
+  <footer>
+    توالي · شروط الاستخدام<br>
+    <a href="https://m7mdrami.github.io/tawali-legal/">سياسة الخصوصية</a>
+  </footer>
+
 </div>
 </body>
 </html>
